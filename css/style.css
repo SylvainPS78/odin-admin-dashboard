@@ -79,4 +79,51 @@ html {
 body {
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: "nav header" "nav main";
+}
+
+.nav {
+  grid-area: nav;
+  background-color: #038bca;
+  color: white;
+  font-weight: bold;
+}
+
+.main {
+  grid-area: main;
+  background-color: #c4bdbd;
+}
+
+.header {
+  grid-area: header;
+}
+
+.nav__title {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+.nav__title__svg {
+  fill: white;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.nav__list__item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0 0 1.5rem;
+}
+.nav__list__item__svg {
+  fill: white;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.nav__list__item:nth-child(6) {
+  padding-bottom: 3rem;
 }/*# sourceMappingURL=style.css.map */
