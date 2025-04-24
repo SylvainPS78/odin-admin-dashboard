@@ -73,9 +73,13 @@ h6 {
 
 $large-font-size: clamp(16px, 1vw + 0.75rem, 20px);
 $normal-font-size: clamp(14px, 1vw + 0.5rem, 16px);
+$small-font-size: clamp(10px, 1vw + 0.25rem, 12px);
 $blue: #038bca;
-$grey: #c4bdbd;
+$grey: #e2d8d8;
 $yellow: #f1b934;
+$nav-transition: 0.3s ease-in-out;
+$nav-padding: 1rem;
+$icon-size: 1.5rem;
 
 html {
   font-family: "Roboto", serif;
@@ -100,6 +104,67 @@ body {
   background-color: $blue;
   color: white;
   font-weight: bold;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: $nav-padding;
+    gap: $nav-padding;
+  }
+
+  &__logo {
+    fill: white;
+    width: $icon-size * 1.67;
+    height: $icon-size * 1.67;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: $large-font-size;
+  }
+
+  &__menu {
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 0.5rem;
+    &:nth-child(6) {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: $nav-padding 1.5rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color $nav-transition;
+
+    &:hover,
+    &:focus-visible {
+      background-color: rgba(255, 255, 255, 0.151);
+      outline: none;
+    }
+
+    &:focus {
+      outline: 2px solid white;
+      outline-offset: -2px;
+    }
+  }
+
+  &__icon {
+    fill: white;
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  &__text {
+    font-size: $normal-font-size;
+    font-weight: bold;
+  }
 }
 
 .main {
@@ -109,33 +174,108 @@ body {
 
 .header {
   grid-area: header;
-}
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
 
-.nav__title {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-  &__svg {
-    fill: white;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-.nav__list__item {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem 0 0 1.5rem;
-
-  &__svg {
-    fill: white;
-    width: 1.5rem;
-    height: 1.5rem;
+  &__search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: $nav-padding * 2;
+    gap: $nav-padding;
   }
 
-  &:nth-child(6) {
-    padding-bottom: 3rem;
+  &__icon {
+    height: $icon-size;
+    width: $icon-size;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  &__avatar {
+    width: $icon-size * 2;
+    height: $icon-size * 2;
+    border-radius: 50%;
+
+    &--big {
+      width: $icon-size * 3;
+      height: $icon-size * 3;
+      border-radius: 50%;
+      align-self: center;
+    }
+  }
+
+  &__welcome {
+    display: flex;
+    align-content: center;
+    padding-left: $nav-padding * 2;
+    gap: $nav-padding;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  &__button {
+    background-color: $blue;
+    color: white;
+    border-radius: 1.5rem;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: bold;
+    transition: all $nav-transition;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      background-color: lighten($blue, 10%);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    &:focus {
+      outline: 2px solid $blue;
+      outline-offset: -2px;
+    }
+
+    &:active {
+      transform: scale(0.98) translateY(0);
+    }
+  }
+
+  &__input {
+    border: none;
+    background-color: $grey;
+    width: 100%;
+    border-radius: 1.5rem;
+    padding-left: $nav-padding;
+  }
+
+  &__text {
+    font-size: $normal-font-size;
+    font-weight: bold;
+    &--small {
+      font-size: $small-font-size;
+      font-weight: bold;
+    }
+
+    &--large {
+      font-size: $large-font-size;
+      font-weight: bold;
+    }
   }
 }
