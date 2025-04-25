@@ -74,6 +74,7 @@ html {
   font-size: clamp(14px, 1vw + 0.5rem, 16px);
   height: 100vh;
   width: 100vw;
+  min-width: 1250px;
 }
 
 body {
@@ -144,7 +145,7 @@ body {
 
 .main {
   grid-area: main;
-  background-color: #e2d8d8;
+  background-color: #e2e2e2;
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 3fr 1fr;
@@ -152,16 +153,14 @@ body {
   gap: 1rem;
   padding: 2rem;
 }
-.main__icon {
-  height: 1.5rem;
-  width: 1.5rem;
-}
 .main__projects {
   grid-area: projects;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto repeat(3, 1fr);
   gap: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .main__card {
   position: relative;
@@ -208,6 +207,10 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 3fr 2fr;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+  background-color: white;
 }
 .header__search {
   display: flex;
@@ -215,10 +218,6 @@ body {
   align-items: center;
   padding-left: 2rem;
   gap: 1rem;
-}
-.header__icon {
-  height: 1.5rem;
-  width: 1.5rem;
 }
 .header__user {
   display: flex;
@@ -280,7 +279,7 @@ body {
 }
 .header__input {
   border: none;
-  background-color: #e2d8d8;
+  background-color: #e2e2e2;
   width: 100%;
   border-radius: 1.5rem;
   padding: 0.5rem 1rem;
@@ -334,7 +333,7 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #e2d8d8;
+  background-color: #e2e2e2;
 }
 
 .trending__avatar {
@@ -363,4 +362,32 @@ body {
 }
 .trending__text {
   grid-area: text;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+}
+.icon-button:focus-visible {
+  outline: 2px solid #038bca;
+  outline-offset: 2px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+.main__icon,
+.header__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: all 0.2s ease-in-out;
 }/*# sourceMappingURL=style.css.map */

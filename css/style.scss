@@ -75,17 +75,22 @@ $large-font-size: clamp(16px, 1vw + 0.75rem, 20px);
 $normal-font-size: clamp(14px, 1vw + 0.5rem, 16px);
 $small-font-size: clamp(10px, 1vw + 0.25rem, 12px);
 $blue: #038bca;
-$grey: #e2d8d8;
+$grey: #e2e2e2;
 $yellow: #f1b934;
 $nav-transition: 0.3s ease-in-out;
 $nav-padding: 1rem;
 $icon-size: 1.5rem;
+$icon-transition: 0.2s ease-in-out;
+$icon-hover-scale: 1.1;
+$shadow-color: rgba(0, 0, 0, 0.1);
+$shadow-offset: 0 4px 6px -1px;
 
 html {
   font-family: "Roboto", serif;
   font-size: $normal-font-size;
   height: 100vh;
   width: 100vw;
+  min-width: 1250px;
 }
 
 body {
@@ -179,17 +184,13 @@ body {
   gap: $nav-padding;
   padding: $nav-padding * 2;
 
-  &__icon {
-    height: $icon-size;
-    width: $icon-size;
-  }
-
   &__projects {
     grid-area: projects;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto repeat(3, 1fr);
     gap: $nav-padding;
+    height: fit-content;
   }
 
   &__card {
@@ -242,6 +243,10 @@ body {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 3fr 2fr;
+  box-shadow: $shadow-offset $shadow-color;
+  position: relative;
+  z-index: 1;
+  background-color: white;
 
   &__search {
     display: flex;
@@ -249,11 +254,6 @@ body {
     align-items: center;
     padding-left: $nav-padding * 2;
     gap: $nav-padding;
-  }
-
-  &__icon {
-    height: $icon-size;
-    width: $icon-size;
   }
 
   &__user {
@@ -430,4 +430,35 @@ body {
   &__text {
     grid-area: text;
   }
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all $icon-transition;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: scale($icon-hover-scale);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $blue;
+    outline-offset: 2px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.main__icon,
+.header__icon {
+  height: $icon-size;
+  width: $icon-size;
+  transition: all $icon-transition;
 }
